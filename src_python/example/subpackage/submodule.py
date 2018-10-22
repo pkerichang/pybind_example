@@ -22,15 +22,15 @@ class SampleClass:
 
     def __init__(self, value: Optional[Tuple[int, float]]=None) -> None:
         """__init__(self, value: Optional[Tuple[int, float]]=None) -> None"""
-        self._a = 0  # type: int
-        self.b = 1.0  # type: float
+        self._var_private = 0  # type: int
+        self.var_public = 1.0  # type: float
         if value is not None:
-            self._a = value[0]  # type: int
-            self.b = value[1]  # type: float
+            self._var_private = value[0]  # type: int
+            self.var_public = value[1]  # type: float
 
     def add_to_private(self, val: int) -> int:
         """Add given value to private var and return result"""
-        return self._a + val
+        return self._var_private + val
 
     @classmethod
     def get_desc(cls) -> str:
@@ -38,9 +38,9 @@ class SampleClass:
         return "A sample class"
 
     @property
-    def a(self) -> int:
-        return self._a
+    def var_private(self) -> int:
+        return self._var_private
 
-    @a.setter
-    def a(self, val: int) -> None:
-        self._a = val
+    @var_private.setter
+    def var_private(self, val: int) -> None:
+        self._var_private = val
