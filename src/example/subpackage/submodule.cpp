@@ -1,5 +1,7 @@
 #include <memory>
 
+#include <string>
+
 #include <example/subpackage/submodule.h>
 
 class sample_class {
@@ -16,8 +18,10 @@ public:
   int add_to_private(int val) { return var_private + val; }
 
   static std::string get_desc() { return "A sample class"; }
-  static std::string foobar = "foobar";
+  static const std::string foobar;
 };
+
+const std::string sample_class::foobar = "foobar";
 
 void bind_subpackage_submodule(py::module &m_top) {
   py::module m = m_top.def_submodule("submodule");
@@ -48,15 +52,16 @@ value : Optional[Tuple[int, double]]
 
   const char *init_doc =
       "__init__(self, value: Optional[Tuple[int, double]]=None) -> None";
-  c.def(py::init([](py::tuple value) {
+  c.def(py::init([](py::object value = py::none()) {
           auto ans = std::make_unique<sample_class>();
-          if (value != nullptr) {
-            ans->set_var_private(value[0]);
-            ans->var_public = value[1];
+          if (!value.is_none()) {
+            auto tmp = value.cast<py::tuple>();
+            ans->set_var_private(tmp[0].cast<py::int_>());
+            ans->var_public = tmp[1].cast<py::float_>();
           }
           return ans;
         }),
-        init_doc, py::arg_v("value", nullptr).none(true));
+        init_doc, py::arg_v("value", py::none()).none(true));
 
   options.enable_function_signatures();
 
@@ -75,5 +80,6 @@ value : Optional[Tuple[int, double]]
                  &sample_class::set_var_private, "A private member");
 
   // add class member
-  c.def_property_static("foobar", &sample_class::foobar, "A class member");
+  c.def_property_readonly_static(
+      "foobar", []() { return sample_class::foobar; }, "A class member");
 }

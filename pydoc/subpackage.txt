@@ -1,0 +1,20 @@
+Python Library Documentation: module example.subpackage in example
+
+NNAAMMEE
+    example.subpackage - This is a Python package contains a submodule and some functions/attributes.
+
+SSUUBBMMOODDUULLEESS
+    submodule
+
+FFUUNNCCTTIIOONNSS
+    ccoonnccaatt(...) method of builtins.PyCapsule instance
+        concat(arg0: str, arg1: str) -> str
+        
+        Concatenate two strings.
+
+DDAATTAA
+    wwhheerree = 'the world'
+
+FFIILLEE
+    (built-in)
+

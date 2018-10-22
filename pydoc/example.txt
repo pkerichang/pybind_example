@@ -1,0 +1,11 @@
+Python Library Documentation: module example
+
+NNAAMMEE
+    example - This Python package only contains a submodule.
+
+SSUUBBMMOODDUULLEESS
+    subpackage
+
+FFIILLEE
+    /home/erichang/projects/pybind11_example/build/lib.linux-x86_64-3.7/example.cpython-37m-x86_64-linux-gnu.so
+
