@@ -51,7 +51,7 @@ value : Optional[Tuple[int, double]]
   options.disable_function_signatures();
 
   const char *init_doc =
-      "__init__(self, value: Optional[Tuple[int, double]]=None) -> None";
+      "__init__(self, value: Optional[Tuple[int, float]]=None) -> None";
   c.def(py::init([](py::object value = py::none()) {
           auto ans = std::make_unique<sample_class>();
           if (!value.is_none()) {

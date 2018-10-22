@@ -39,14 +39,14 @@ find_package(pybind11 REQUIRED)
 
 # setup include directories
 include_directories(
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/src_cpp
   )
 
 # add python bindings for cbag
 set(SRC_FILES
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/example/module.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/example/subpackage/module.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/example/subpackage/submodule.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src_cpp/example/module.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src_cpp/example/subpackage/module.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src_cpp/example/subpackage/submodule.cpp
   )
 
 pybind11_add_module(example ${SRC_FILES})

@@ -86,7 +86,7 @@ setup(
     setup_requires=[],
     tests_require=[],
     packages=['example'],
-    package_dir={'': 'src'},
+    package_dir={'': 'src_cpp'},
     package_data={},
     ext_modules=[CMakePyBind11Extension('example')],
     cmdclass=dict(build_ext=CMakePyBind11Build),
