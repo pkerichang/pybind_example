@@ -74,18 +74,21 @@ value : Optional[Tuple[int, double]]
   c.def_static("get_desc", &sample_class::get_desc, "get a description string");
 
   // add public member
-  c.def_readwrite("var_public", &sample_class::var_public, "A public member");
+  c.def_readwrite("var_public", &sample_class::var_public, "float: A public member");
 
   // add private member through getter/setter
   c.def_property("var_private", &sample_class::get_var_private,
-                 &sample_class::set_var_private, "A private member");
+                 &sample_class::set_var_private, "int: A private member");
 
   // add read only property
   c.def_readonly("var_readonly", &sample_class::var_readonly,
-                 "A readonly public member");
+                 "int: A readonly public member");
 
   // add class member
+  // comment out as there's no way to annotate strict class member in mypy
+  /*
   c.def_property_readonly_static(
       "foobar", [](py::object) { return sample_class::foobar; },
       "A class member");
+  */
 }
