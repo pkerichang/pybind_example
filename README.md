@@ -1,5 +1,6 @@
 # pybind11_example
-An simple example of a python C++ extension built with pybind11 show-casing all the features
+An simple example of a python C++ extension built with pybind11 show-casing all the features.
+A C++ compiler with C++11 support is required.
 
 the `src_cpp` folder contains a Python C++ extension built with pybind11, the `src_python`
 folder contains the equivalent pure-python version.
